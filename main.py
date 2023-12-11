@@ -1,8 +1,24 @@
-username = (input("Hello. What's your name?\n"))
-print(f"Hello {username}! Welcome to the quiz!")
+from string import ascii_lowercase
+import gamefunctions
 
 numberOfQuestions = 0
 scoreboard = 0
+
+def personalDetails():
+    username = (input("Hello. What's your name?\n"))
+    print(f"Hello {username}! Welcome to the quiz!")
+
+
+def finalScoreboard(scoreboard, numberOfQuestions):
+    print(f"Your final score is {scoreboard} out of {numberOfQuestions}")
+    if scoreboard / numberOfQuestions * 100 > 75:
+        print(f"Wow! Very impressive!")
+    elif scoreboard / numberOfQuestions * 100 > 50:
+        print(f"Pretty good. Still some room for improvement")
+    elif scoreboard / numberOfQuestions * 100 > 25:
+        print(f"You got some right, but not the best score ever")
+    else:
+        print(f"Better luck next time...")
 
 Questions = {"In what year did WW1 begin?": ["1914", "1917", "1920", "1923"],
              "How many wives did Henry VIII have?": ["6", "3", "0", "7"],
@@ -19,14 +35,16 @@ Questions = {"In what year did WW1 begin?": ["1914", "1917", "1920", "1923"],
 # Correct answer is set by index and answers are sorted. All answers are displayed and user asked
 # to enter number for answer. Message returned. Scoreboard updated and presented at end of game
 
+personalDetails()
+
 for question, answers in Questions.items():
     correct_answer = answers[0]
-    sorted_answers = sorted(answers)
-
-    for label, response in enumerate(sorted_answers):
+    labeled_answers = dict(zip(ascii_lowercase, sorted(answers)))
+    print(f"{question}")
+    for label, response in labeled_answers.items():
         print(f"{label}: {response}")
-    answer_index = int(input(f"{question}\nPlease choose 0, 1, 2, or 3\n"))
-    answer = sorted_answers[answer_index]
+    answer_index = input("Please choose a, b, c, or d...\n")
+    answer = labeled_answers[answer_index]
 
     if answer == correct_answer:
         print("Correct! Well done!")
@@ -34,4 +52,5 @@ for question, answers in Questions.items():
     else:
         print("Nope, that's not right...")
     numberOfQuestions += 1
-print(f"So, your final score is...{scoreboard}")
+
+finalScoreboard(scoreboard, numberOfQuestions)
