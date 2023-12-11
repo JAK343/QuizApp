@@ -19,13 +19,14 @@ finalQuestionCount = 0
 def personalDetails():
     username = (input("Hello. What's your name?\n"))
     print(f"Hello {username}! Welcome to the quiz!")
-    numberOfQuestions = int(
-        input(("How many questions would you like in your quiz?\n")))
 
 def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
+    numberOfQuestions = int(input(("How many questions would you like in your quiz?\n")))
     for question, answers in Questions.items():
         correct_answer = answers[0]
         labeled_answers = dict(zip(ascii_lowercase, sorted(answers)))
+        if numberOfQuestions == finalQuestionCount:
+            break
         print(f"{question}")
         for label, response in labeled_answers.items():
             print(f"{label}: {response}")
@@ -36,8 +37,9 @@ def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
             scoreboard += 1
             print(f"{scoreboard}")
         else:
-            print("Nope, that's not right...")  
+            print("Nope, that's not right...")
         finalQuestionCount += 1
+        
     print(f"Your final score is {scoreboard} out of {finalQuestionCount}")
     if scoreboard / finalQuestionCount * 100 > 75:
         print(f"Wow! Very impressive!")
@@ -48,10 +50,5 @@ def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
     else:
         print(f"Better luck next time...")
 
-
-# Correct answer is set by index and answers are sorted. All answers are displayed and user asked
-# to enter number for answer. Message returned. Scoreboard updated and presented at end of game
-
 personalDetails()
 playQuiz(scoreboard, numberOfQuestions, finalQuestionCount)
-
