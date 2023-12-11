@@ -1,13 +1,12 @@
 from string import ascii_lowercase
-import gamefunctions
 
-numberOfQuestions = 0
 scoreboard = 0
 
 def personalDetails():
     username = (input("Hello. What's your name?\n"))
     print(f"Hello {username}! Welcome to the quiz!")
-
+    numberOfQuestions = int(input(("How many questions would you like in your quiz?\n")))
+    print(f"{numberOfQuestions}")
 
 def finalScoreboard(scoreboard, numberOfQuestions):
     print(f"Your final score is {scoreboard} out of {numberOfQuestions}")
