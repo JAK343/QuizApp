@@ -14,15 +14,11 @@ while play_round == True:
     playQuiz(scoreboard, numberOfQuestions, finalQuestionCount)
     time.sleep(2)
     user_choice = input("Would you like to play again? Please type yes or no\n").lower()
-    print(user_choice)
     user_choice = user_choice.strip()
-    print(user_choice)
 
     while user_choice != "yes" and user_choice != "no":
         user_choice = input("Please type yes or no\n").lower()
-        print(user_choice)
         user_choice = user_choice.strip()
-        print(user_choice)
     if user_choice == "no":
         play_round == False
         print("No worries. We hope you enjoyed the quiz!")

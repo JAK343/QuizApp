@@ -14,9 +14,10 @@ def personalDetails():
     time.sleep(2)
 
 def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
-    numberOfQuestions = int(input(("How many questions would you like in your quiz? You can select up to 9 questions\n")))
+    numberOfQuestions = int(input((f"How many questions would you like in your quiz? You can select up to {len(Questions)} questions\n")))
     while numberOfQuestions > len(Questions):
-        numberOfQuestions = int(input("Please choose between 1 and 9 questions...\n"))
+        numberOfQuestions = int(input(f"Please choose between 1 and {len(Questions)} questions...\n"))
+
     print(f"Ok then, {numberOfQuestions} questions coming up...")
     time.sleep(2)
     print(f"Good luck...")
@@ -35,15 +36,20 @@ def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
             print(f"{label}: {response}")
 
         timer = True
+        valid_answer = True
         t1 = time.time()
-        answer_index = input("Please choose a, b, c, or d...\n")
+        answer_index = input("Please choose a, b, c, or d...\n").lower()
+        answer_index = answer_index.strip()
+        if answer_index != "a" and answer_index != "b" and answer_index != "c" and answer_index != "d":
+            print("Sorry, you didn't enter a, b, c, or d. No points there...")
+            valid_answer = False
         t2 = time.time()
         t = math.floor(t2 - t1)
          
         if t >= 15:
             print("You ran out of time! Next question...")
             timer = False                    
-        if timer == True:
+        if timer == True and valid_answer == True:
             answer = labeled_answers[answer_index]
             if answer == correct_answer:
                 print("Correct! Well done!")
@@ -60,6 +66,7 @@ def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
     time.sleep(2)
     print(f"Your final score is {scoreboard} out of a possible {finalQuestionCount * 2}")
     time.sleep(2)
+
     if scoreboard / (finalQuestionCount * 2) * 100 > 75:
         print(f"Wow! Very impressive!")
     elif scoreboard / (finalQuestionCount * 2) * 100 > 50:

@@ -7,5 +7,6 @@ Questions = {"In what year did WW1 begin?": ["1914", "1917", "1920", "1923"],
              "Which country has won the Men's FIFA World Cup the most times?":  ["Brazil", "France", "Italy", "Argentina"],
              "How often are the Summer Olympic Games held?":  ["Every 4 years", "Every 2 years", "Every 6 years", "Every 8 years"],
              "At which track is the British F1 Grand Prix currently held?": ["Silverstone", "Brands Hatch", "Bedford Autodrome", "Anglesey Circuit"],
-
+             "What is the first name of the drummer from The Beatles?": ["Ringo", "Brian", "George", "Roger"],
+             "Which singer released 'Umbrella' in 2007?": ["Rihanna", "Lady Gaga", "Katy Perry", "Justin Timberlake"]
              }
