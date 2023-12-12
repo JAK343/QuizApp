@@ -1,6 +1,7 @@
 import math
 from string import ascii_lowercase
 import time
+import random
 
 Questions = {"In what year did WW1 begin?": ["1914", "1917", "1920", "1923"],
              "How many wives did Henry VIII have?": ["6", "3", "0", "7"],
@@ -34,7 +35,10 @@ def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
     print(f"Good luck...")
     time.sleep(2)
 
-    for question, answers in Questions.items():
+    num_questions_in_quiz = min(numberOfQuestions, len(Questions))
+    quiz_questions = random.sample(list(Questions.items()), k=num_questions_in_quiz)
+
+    for num, (question, answers) in enumerate(quiz_questions, start=1):
         correct_answer = answers[0]
         labeled_answers = dict(zip(ascii_lowercase, sorted(answers)))
         if numberOfQuestions == finalQuestionCount:
