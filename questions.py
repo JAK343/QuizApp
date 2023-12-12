@@ -1,9 +1,3 @@
-import math
-from string import ascii_lowercase
-import time
-import random
-from gamefunctions import *
-
 Questions = {"In what year did WW1 begin?": ["1914", "1917", "1920", "1923"],
              "How many wives did Henry VIII have?": ["6", "3", "0", "7"],
              "In what year did the Berlin Wall fall?":  ["1989", "1976", "1995", "1970"],
@@ -15,10 +9,3 @@ Questions = {"In what year did WW1 begin?": ["1914", "1917", "1920", "1923"],
              "At which track is the British F1 Grand Prix currently held?": ["Silverstone", "Brands Hatch", "Bedford Autodrome", "Anglesey Circuit"],
 
              }
-numberOfQuestions = 0
-scoreboard = 0
-finalQuestionCount = 0
-
-
-personalDetails()
-playQuiz(scoreboard, numberOfQuestions, finalQuestionCount)
