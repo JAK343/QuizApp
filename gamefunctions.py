@@ -14,7 +14,9 @@ def personalDetails():
     time.sleep(2)
 
 def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
-    numberOfQuestions = int(input(("How many questions would you like in your quiz?\n")))
+    numberOfQuestions = int(input(("How many questions would you like in your quiz? You can select up to 9 questions\n")))
+    while numberOfQuestions > len(Questions):
+        numberOfQuestions = int(input("Please choose between 1 and 9 questions...\n"))
     print(f"Ok then, {numberOfQuestions} questions coming up...")
     time.sleep(2)
     print(f"Good luck...")
@@ -54,7 +56,10 @@ def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
             timer = False
         finalQuestionCount += 1
 
+    print(f"That's the end of the quiz...")
+    time.sleep(2)
     print(f"Your final score is {scoreboard} out of a possible {finalQuestionCount * 2}")
+    time.sleep(2)
     if scoreboard / (finalQuestionCount * 2) * 100 > 75:
         print(f"Wow! Very impressive!")
     elif scoreboard / (finalQuestionCount * 2) * 100 > 50:
