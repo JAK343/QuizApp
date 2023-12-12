@@ -40,7 +40,7 @@ def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
 
     for num, (question, answers) in enumerate(quiz_questions, start=1):
         correct_answer = answers[0]
-        labeled_answers = dict(zip(ascii_lowercase, sorted(answers)))
+        labeled_answers = dict(zip(ascii_lowercase, random.sample(answers, k=len(answers))))
         if numberOfQuestions == finalQuestionCount:
             break
         print(f"{question}")
