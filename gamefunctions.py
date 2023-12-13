@@ -2,6 +2,7 @@ import math
 from string import ascii_lowercase
 import time
 import random
+import sys
 from questions import *
 
 def personalDetails():
@@ -14,15 +15,19 @@ def personalDetails():
     time.sleep(2)
 
 def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
-    numberOfQuestions = int(input((f"How many questions would you like in your quiz? You can select up to {len(Questions)} questions\n")))
+    numberOfQuestions = None
 
-   # while bool(numberOfQuestions) == False:
-   #     numberOfQuestions = int(input(f"Please choose between 1 and {len(Questions)} questions...\n"))
+    while numberOfQuestions is None:
+        try:
+            numberOfQuestions = int(input(f"How many questions would you like in your quiz? You can choose between 1 and {len(Questions)}\n"))
+        except ValueError:
+            print(f"Please print a valid number")
+        else:
+            if numberOfQuestions > len(Questions):
+                print(f"Please enter between 1 and {len(Questions)}")
+                numberOfQuestions = None
 
-   # while numberOfQuestions > len(Questions):
-   #     numberOfQuestions = int(input(f"Please choose between 1 and {len(Questions)} questions...\n"))
-
-    print(f"Ok then, {numberOfQuestions} questions coming up...")
+    print(f"Okay then, {numberOfQuestions} questions coming up...")
     time.sleep(2)
     print(f"Good luck...")
     time.sleep(2)
