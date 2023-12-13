@@ -15,8 +15,12 @@ def personalDetails():
 
 def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
     numberOfQuestions = int(input((f"How many questions would you like in your quiz? You can select up to {len(Questions)} questions\n")))
-    while numberOfQuestions > len(Questions):
-        numberOfQuestions = int(input(f"Please choose between 1 and {len(Questions)} questions...\n"))
+
+   # while bool(numberOfQuestions) == False:
+   #     numberOfQuestions = int(input(f"Please choose between 1 and {len(Questions)} questions...\n"))
+
+   # while numberOfQuestions > len(Questions):
+   #     numberOfQuestions = int(input(f"Please choose between 1 and {len(Questions)} questions...\n"))
 
     print(f"Ok then, {numberOfQuestions} questions coming up...")
     time.sleep(2)
@@ -59,7 +63,9 @@ def playQuiz(scoreboard, numberOfQuestions, finalQuestionCount):
                     scoreboard += 1
             else:
                 print("Nope, that's not right...")
+                print(f"The correct answer was {correct_answer}")
             timer = False
+        time.sleep(2)
         finalQuestionCount += 1
 
     print(f"That's the end of the quiz...")

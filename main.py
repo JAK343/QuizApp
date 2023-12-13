@@ -10,6 +10,7 @@ finalQuestionCount = 0
 play_round = True
 
 personalDetails()
+
 while play_round == True:
     playQuiz(scoreboard, numberOfQuestions, finalQuestionCount)
     time.sleep(2)
