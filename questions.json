@@ -1,0 +1,32 @@
+{
+    "Question": [
+            "In what year did WW1 begin?", "How many wives did Henry VIII have?",
+             "In what year did the Berlin Wall fall?",
+             "What is the capital city of Egypt?",
+             "What is the largest country in the world by area?",
+             "How many countries are there in Africa?",
+             "Which country has won the Men's FIFA World Cup the most times?",
+             "How often are the Summer Olympic Games held?",
+             "At which track is the British F1 Grand Prix currently held?",
+             "What is the first name of the drummer from The Beatles?",
+             "Which singer released 'Umbrella' in 2007?"
+             ],
+        
+        "Answer": [
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+        ],
+
+        "Options": [
+            ["1914", "1917", "1920", "1923"],
+            ["6", "3", "0", "7"],
+            ["1989", "1976", "1995", "1970"],
+            ["Cairo", "Kampala", "Rome", "Nairobi"],
+            ["Russia", "China", "USA", "Canada"],
+            ["54", "25", "72", "95"],
+            ["Brazil", "France", "Italy", "Argentina"],
+            ["Every 4 years", "Every 2 years", "Every 6 years", "Every 8 years"],
+            ["Silverstone", "Brands Hatch", "Bedford Autodrome", "Anglesey Circuit"],
+            ["Ringo", "Brian", "George", "Roger"],
+            ["Rihanna", "Lady Gaga", "Katy Perry", "Justin Timberlake"]
+        ]
+}
