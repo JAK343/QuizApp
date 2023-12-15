@@ -53,8 +53,8 @@ class Quiz:
             val+=1
 
     # def displayTimer(self):
-        # self.timer_label = Label(root, text="15")
-        # self.timer_label.place(x = 700, y = 100)
+        # self.timer_label = Label(root, text="15", width=30)
+        # self.timer_label.place(x = 700, y = 300)
         
     def update_timer(self):
         self.timer_running = True
@@ -99,10 +99,6 @@ class Quiz:
             self.display_question()
             self.display_options() 
             
-            
-
-            
-
     def displayResult(self):
         scoreboard = int(self.correct)
         
@@ -116,8 +112,6 @@ class Quiz:
             message = f"You scored {scoreboard} out of {self.finalQuestionCount * 2}. Better luck next time..."
 
         mb.showinfo("Result", f"{message}")
-
-
 
 # Create root window
 
