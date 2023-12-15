@@ -14,16 +14,22 @@ class Quiz:
         self.opts= self.radio_buttons()
         self.display_options()
         self.button()
+        self.seconds = 15
+        self.timer_running = False
+        # self.displayTimer()
+        self.update_timer()
         self.finalQuestionCount=len(question)
         self.correct=0
 
     def display_title(self):
         title = Label(root, text="General knowledge quiz", width=55, fg="white", background="blue", font=("ariel", 20))
         title.place(x=5, y=5)
+        bonus_point_message = Label(root, text="Answer within 5 seconds to score a bonus point!", fg="white", background="blue")
+        bonus_point_message.place(x=300, y=100)
 
     def display_question(self):
         q_number = Label(root, text=question[self.q_number], width=60, bg="blue", fg="white", font=('ariel' , 16, 'bold'), anchor='w' )
-        q_number.place(x=300, y=100)
+        q_number.place(x=300, y=60)
 
     def radio_buttons(self):
         q_list = []
@@ -46,6 +52,26 @@ class Quiz:
             self.opts[val]['text']=option
             val+=1
 
+    # def displayTimer(self):
+        # self.timer_label = Label(root, text="15")
+        # self.timer_label.place(x = 700, y = 100)
+        
+    def update_timer(self):
+        self.timer_running = True
+        if self.timer_running and self.seconds > 0:
+            self.seconds -= 1
+            seconds = self.seconds % 60
+            time = f"{seconds}"
+            # self.timer_label.configure(text=time)
+            root.after(1000, self.update_timer)
+            """     if int(time) > 10:
+                self.timer_label.configure(text=time, bg="green")
+            elif int(time) < 10 and int(time) > 5:
+                self.timer_label.configure(text=time, bg="orange")
+            else:
+                self.timer_label.configure(text=time, bg="red") """
+
+
     def button(self):
         
         next_button = Button(root, text="Next", command=self.next_btn, width=10, bg="blue", fg="white", font=("ariel", 16, "bold"))
@@ -60,6 +86,8 @@ class Quiz:
     def next_btn(self):
         if self.check_answer(self.q_number):
             self.correct += 1
+            if self.seconds >= 10:
+                self.correct += 1
 
         self.q_number += 1
 
@@ -67,6 +95,7 @@ class Quiz:
             self.displayResult()
             root.destroy()
         else:
+            self.seconds = 15
             self.display_question()
             self.display_options() 
             
@@ -78,13 +107,13 @@ class Quiz:
         scoreboard = int(self.correct)
         
         if scoreboard / self.finalQuestionCount * 100 > 75:
-            message = f"You scored {scoreboard} out of {self.finalQuestionCount}. Wow! Very impressive!"
+            message = f"You scored {scoreboard} out of {self.finalQuestionCount * 2}. Wow! Very impressive!"
         elif scoreboard / self.finalQuestionCount * 100 > 50:
-            message = f"You scored {scoreboard} out of {self.finalQuestionCount}. Pretty good. Still some room for improvement"
+            message = f"You scored {scoreboard} out of {self.finalQuestionCount * 2}. Pretty good. Still some room for improvement"
         elif scoreboard / self.finalQuestionCount * 100 > 25:
-            message = f"You scored {scoreboard} out of {self.finalQuestionCount}. You got some right, but not the best score ever..."
+            message = f"You scored {scoreboard} out of {self.finalQuestionCount * 2}. You got some right, but not the best score ever..."
         else:
-            message = f"You scored {scoreboard} out of {self.finalQuestionCount}. Better luck next time..."
+            message = f"You scored {scoreboard} out of {self.finalQuestionCount * 2}. Better luck next time..."
 
         mb.showinfo("Result", f"{message}")
 
