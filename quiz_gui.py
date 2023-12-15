@@ -14,10 +14,6 @@ class Quiz:
         self.opts= self.radio_buttons()
         self.display_options()
         self.button()
-        self.seconds = 15
-        self.timer_running = False
-        self.displayTimer()
-        self.update_timer()
         self.finalQuestionCount=len(question)
         self.correct=0
 
@@ -28,7 +24,6 @@ class Quiz:
     def display_question(self):
         q_number = Label(root, text=question[self.q_number], width=60, bg="blue", fg="white", font=('ariel' , 16, 'bold'), anchor='w' )
         q_number.place(x=300, y=100)
-        self.displayTimer()
 
     def radio_buttons(self):
         q_list = []
@@ -51,26 +46,6 @@ class Quiz:
             self.opts[val]['text']=option
             val+=1
 
-    def displayTimer(self):
-        self.timer_label = Label(root, text="15")
-        self.timer_label.place(x = 700, y = 100)
-        
-    def update_timer(self):
-        self.timer_running = True
-        if self.timer_running and self.seconds > 0:
-            self.seconds -= 1
-            seconds = self.seconds % 60
-            time = f"{seconds}"
-            self.timer_label.configure(text=time)
-            root.after(1000, self.update_timer)
-            """     if int(time) > 10:
-                self.timer_label.configure(text=time, bg="green")
-            elif int(time) < 10 and int(time) > 5:
-                self.timer_label.configure(text=time, bg="orange")
-            else:
-                self.timer_label.configure(text=time, bg="red") """
-
-
     def button(self):
         
         next_button = Button(root, text="Next", command=self.next_btn, width=10, bg="blue", fg="white", font=("ariel", 16, "bold"))
@@ -92,7 +67,6 @@ class Quiz:
             self.displayResult()
             root.destroy()
         else:
-            self.seconds = 15
             self.display_question()
             self.display_options() 
             
